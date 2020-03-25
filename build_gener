@@ -1,0 +1,51 @@
+#!/bin/bash
+# This is a comment
+cd /home/z/Desktop/BlocklyDuino/blockly/
+python build.py
+echo "FIRST"
+
+cp -f arduino_compressed.js /home/z/Desktop/BlocklyDuino/blockly/compressed/
+cp -f blocks_compressed.js /home/z/Desktop/BlocklyDuino/blockly/compressed/
+cp -f blockly_compressed.js /home/z/Desktop/BlocklyDuino/blockly/compressed/
+
+cd /home/z/Desktop/BlocklyDuino/blockly/compressed/
+
+
+sed 's/Blockly./ScratchBlocks./g' ./arduino_compressed.js >> myfile1_1
+sed 's/Blockly./ScratchBlocks./g' ./blocks_compressed.js >> myfile2_1
+sed 's/Blockly./ScratchBlocks./g' ./blockly_compressed.js >> myfile3_1
+
+sed 's/ScratchBlocks.Arduino/Blockly.Arduino/g' ./myfile1_1 >> myfile1_2
+sed 's/ScratchBlocks.Arduino/Blockly.Arduino/g' ./myfile2_1 >> myfile2_2
+sed 's/ScratchBlocks.Arduino/Blockly.Arduino/g' ./myfile3_1 >> myfile3_2
+
+sed '2a\import ScratchBlocks from scratch-blocks;' ./myfile1_2 >> myfile1_3
+sed "s/scratch-blocks/'scratch-blocks'/g" ./myfile1_3 >> myfile1_4
+rm arduino_compressed.js
+rm blocks_compressed.js
+rm blockly_compressed.js
+rm myfile1_1
+rm myfile2_1
+rm myfile3_1
+rm myfile1_2
+rm myfile1_3
+
+mv -f myfile1_4 arduino_compressed.js
+mv -f myfile2_2 blocks_compressed.js
+mv -f myfile3_2 blockly_compressed.js
+
+echo "SECOND"
+npm run build
+echo "THIRD"
+
+cp -R /home/z/Desktop/BlocklyDuino/blockly/dist /home/z/Desktop/Ebobboscratch.v.3.8.0/robboscratch3_gui/node_modules/blocks-compiler/
+cp -f /home/z/Desktop/BlocklyDuino/blockly/package.json /home/z/Desktop/Ebobboscratch.v.3.8.0/robboscratch3_gui/node_modules/blocks-compiler/
+
+echo "FORTH"
+cd /home/z/Desktop/Ebobboscratch.v.3.8.0/robboscratch3_gui/
+npm run build
+
+echo "ENDDDD!"
+
+cd /home/z/Desktop/Ebobboscratch.v.3.8.0/
+./nw

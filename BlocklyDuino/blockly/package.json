@@ -1,0 +1,24 @@
+{
+  "name": "blocks-compiler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/blocks-compiler.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "shim-loader": "^1.0.1",
+    "webpack-cli": "^3.3.2"
+  },
+  "dependencies": {
+    "imports-loader": "^0.8.0",
+    "scratch-blocks": "0.1.0-prerelease.1561032983",
+    "webpack": "^4.33.0"
+  }
+}
