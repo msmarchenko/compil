@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "imports-loader": "^0.8.0",
-    "scratch-blocks": "0.1.0-prerelease.1561032983",
+    "scratch-blocks": "0.1.0-prerelease.20230107072727",
     "webpack": "^4.33.0"
   }
 }
